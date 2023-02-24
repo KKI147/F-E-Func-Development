@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function NavBar() {
   return (
-    <Layout>
+    <Container>
       <Wrapper>
         <Btn>
           <Link href="/join">
@@ -47,7 +47,7 @@ export default function NavBar() {
         </Btn>
         <Btn>
           <Link href="/real-time-soket">
-            <div>Real Time Socket Connect</div>
+            <div>Intersection observer</div>
           </Link>
         </Btn>
         <Btn>
@@ -55,15 +55,16 @@ export default function NavBar() {
             <div>Loading Component</div>
           </Link>
         </Btn>
+        <Copyright>© Copyright 2023. Made by Kim kyeong il</Copyright>
       </Wrapper>
-      <Copyright>© Copyright 2023. Made by Kim kyeong il</Copyright>
-    </Layout>
+    </Container>
   );
 }
 
-const Layout = styled.div`
+const Container = styled.div`
   position: relative;
   width: calc(30% - 15px);
+  height: 100vh;
   margin-right: 15px;
 `;
 
@@ -71,23 +72,24 @@ const Wrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 20px 0;
   font-size: 22px;
   color: #9a9a9a;
 `;
 
 const Btn = styled.div`
   width: 100%;
-  height: 36px;
-  padding: 15px 30px 15px 30px;
+  /* height: 36px; */
+  padding: 0 15px;
   border-top-right-radius: 16px;
   border-bottom-right-radius: 16px;
 
   /* box-shadow: inset 360px 0px 0px #6098ff; */
   & div {
+    /* display: flex;
+    align-items: center;
     width: fit-content;
-    height: 36px;
-    padding: 15px 30px 15px 30px;
+    height: 36px; */
+    padding: 15px 15px;
     border-top-right-radius: 16px;
     border-bottom-right-radius: 16px;
     cursor: pointer;
@@ -104,6 +106,7 @@ const Btn = styled.div`
   }
 `;
 const Copyright = styled.div`
+  margin-top: 100px;
   padding: 20px 20px;
   font-size: 18px;
   color: #9a9a9a;
