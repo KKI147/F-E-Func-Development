@@ -42,6 +42,18 @@ interface FormTypes {
 // return axios.post(API_URL + url, data);
 // }
 
+export const get = async (url: string, data: object) => {
+  return await axios.get<FormTypes>(API_URL + url, { data });
+};
+
 export const post = async (url: string, data: object) => {
   return await axios.post<FormTypes>(API_URL + url, { data });
+};
+
+export const put = async (url: string, data: object) => {
+  return await axios.put<FormTypes>(API_URL + url, { data });
+};
+
+export const cancel = async (url: string, data: object) => {
+  return await axios.delete<FormTypes>(API_URL + url, { data });
 };

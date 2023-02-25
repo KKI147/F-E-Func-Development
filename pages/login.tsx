@@ -3,10 +3,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styled from "styled-components";
-import { useQuery, useMutation, useQueryClient } from "react-query";
-import axios from "axios";
 import { useState, useEffect } from "react";
-// import { postLogin } from "../module/Api";
+import { post } from "../module/Api";
 
 export const Login = () => {
   const [id, setId] = useState<string | null>();
@@ -52,24 +50,14 @@ export const Login = () => {
     resolver: yupResolver(validation),
   });
 
-  const geting = async (join: FormTypes) => {
-    const { data } = await axios.post<FormTypes>(
-      "http://localhost:3000/api/join",
-      {
-        join,
-      }
-    );
-    return { data };
-  };
-
   const onSubmitHandler = (data: FormTypes) => {
-    geting(data);
+    post("/join", data);
     console.log(data.email);
     if (data.email === id && data.password === password) {
       alert("로그인 완료");
       reset();
     } else {
-      alert("로그인을 다시해주세요");
+      alert("이메일과 비밀번호를 확인하세요");
     }
   };
 

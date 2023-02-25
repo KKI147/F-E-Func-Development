@@ -3,9 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styled from "styled-components";
-import axios from "axios";
-
-import { useState, useEffect } from "react";
+import { post } from "../module/Api";
 
 export const Join = () => {
   interface FormTypes {
@@ -39,23 +37,18 @@ export const Join = () => {
     resolver: yupResolver(validation),
   });
 
-  const posting = async (join: FormTypes) => {
-    const { data } = await axios.post<FormTypes>(
-      `${process.env.NEXT_PUBLIC_API_URL}/join`,
-      {
-        join,
-      }
-    );
-    return { data };
-  };
-
   const onSubmitHandler = (data: FormTypes) => {
-    posting(data);
+    post("/join", data);
     const id = data.email;
     const password = data.password;
     localStorage.setItem("ID", id);
     localStorage.setItem("password", password);
-    reset();
+    if (localStorage.setItem !== null) {
+      alert("회원가입 완료");
+      reset();
+    } else {
+      alert("회원가입을 다시해주세요");
+    }
   };
 
   return (
