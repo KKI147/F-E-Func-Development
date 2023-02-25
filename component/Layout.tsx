@@ -20,7 +20,7 @@ const LayoutComponent = styled.div`
 const Section = styled.section`
   position: relative;
   width: calc(100% - 15px);
-  height: calc(100% - 40px);
+  height: calc(100vh - 40px);
   padding: 20px 15px 20px 0;
   /* margin: 20px 15px 20px 0; */
 `;

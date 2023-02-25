@@ -1,16 +1,18 @@
 import styled from "styled-components";
 interface PropsTypes {
-  skill: string;
+  skill: string[];
   description: string;
   status: string;
 }
 
 export const TopSection = ({ skill, description, status }: PropsTypes) => {
+  console.log(skill);
   return (
     <Container>
       <Content>
         <Title>Skill,</Title>
-        <Skill>{skill}</Skill>
+        <Skill>{skill[0]}</Skill>
+        <Skill>{skill[1]}</Skill>
       </Content>
       <Content>
         <Title>Description,</Title>
@@ -52,15 +54,17 @@ const Title = styled.div`
 
 const Detail = styled.div`
   display: flex;
-  width: 120px;
+  width: fit-content;
   height: 30px;
   align-items: center;
   font-weight: bold;
 `;
 const Skill = styled.div`
   display: flex;
-  width: 120px;
+  width: fit-content;
   height: 30px;
+  margin: 0 10px 0 0;
+  padding: 0px 10px;
   justify-content: center;
   align-items: center;
   color: #000;

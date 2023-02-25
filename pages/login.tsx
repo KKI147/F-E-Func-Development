@@ -32,8 +32,8 @@ export const Login = () => {
   const validation = yup.object().shape({
     email: yup
       .string()
-      .required("email을 입력해주세요.")
-      .matches(/\S+@\S+\.\S+/, "email 형식을 확인해주세요."),
+      .required("이메일을 입력해주세요.")
+      .matches(/\S+@\S+\.\S+/, "이메일 형식을 확인해주세요."),
     password: yup
       .string()
       .required("비밀번호를 입력해주세요.")
@@ -44,7 +44,6 @@ export const Login = () => {
     register,
     handleSubmit,
     reset,
-    watch,
     formState: { isSubmitting, isDirty, errors },
   } = useForm<FormTypes>({
     resolver: yupResolver(validation),
@@ -64,7 +63,7 @@ export const Login = () => {
   return (
     <Wrapper>
       <TopSection
-        skill={"Login"}
+        skill={["Axios", "React Hook-Form"]}
         description={"로그인 페이지"}
         status={"개발완료"}
       />
@@ -80,7 +79,7 @@ export const Login = () => {
                 {...register("email")}
                 id="email"
                 name="email"
-                placeholder="이메일 입력해주세요"
+                placeholder="이메일을 입력해주세요"
               />
             </InputBox>
             {errors.email && <Message>{errors.email.message}</Message>}
@@ -121,24 +120,13 @@ const Wrapper = styled.section`
 const Container = styled.div`
   position: relative;
   width: calc(100% - 15px);
-  height: 100%;
+  height: calc(80vh - 30px);
   margin: 10px 15px 20px 0;
   padding: 25px;
   background-color: transparent;
   border-radius: 16px;
   box-sizing: border-box;
   box-shadow: 4px 6px 24px 6px rgb(0 0 0 / 20%);
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-
-  background-color: #333333;
-  border-radius: 16px;
-
-  color: #fff; */
 `;
 
 const UseForm = styled.form`
@@ -178,6 +166,10 @@ const InputForm = styled.input`
   border: 0;
   outline: 0;
   color: #fff;
+  ::placeholder {
+    font-size: 14px;
+    font-weight: bold;
+  }
 `;
 
 const BtnBox = styled.div`
