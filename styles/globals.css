@@ -8,3 +8,10 @@ html body {
   font-family: Inter;
   src: url("/font/Inter-Regular.ttf");
 }
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

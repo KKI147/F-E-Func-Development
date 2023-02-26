@@ -3,9 +3,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styled from "styled-components";
-import { post } from "../module/Api";
+import emailjs from "@emailjs/browser";
+import React, { useRef } from "react";
 
 export const MailSend = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+
   interface FormTypes {
     email: string;
     content: string;
@@ -26,22 +29,44 @@ export const MailSend = () => {
     resolver: yupResolver(validation),
   });
 
-  const onSubmitHandler = (data: FormTypes) => {
-    post("/join", data);
+  const onSubmit = () => {
+    sendMail();
   };
+
+  const sendMail = () => {
+    if (formRef.current) {
+      emailjs
+        .sendForm(
+          "service_8l2ucht",
+          "template_7iei7n6",
+          formRef.current,
+          "3_qeOfICkOCKAXLXS"
+        )
+        .then(
+          (result) => {
+            alert("이메일이 발송되었습니다.");
+            reset();
+          },
+          (error) => {
+            alert("이메일을 다시보내주세요");
+          }
+        );
+    }
+  };
+
   return (
     <Wrapper>
       <TopSection
-        skill={["Axios", "React Hook-Form"]}
+        skill={["Email-JS", "React Hook-Form"]}
         description={"이메일보내기 페이지"}
-        status={"개발중"}
+        status={"개발완료"}
       />
       <Container>
-        <UseForm onSubmit={handleSubmit(onSubmitHandler)}>
-          <Title>이메일 보내기</Title>
+        <UseForm ref={formRef} onSubmit={handleSubmit(onSubmit)}>
+          <Title>문의 하기</Title>
           <Section>
             <LabelBox>
-              <label htmlFor="email">이메일</label>
+              <label htmlFor="email">수신받을 이메일</label>
             </LabelBox>
             <InputBox>
               <InputForm
@@ -67,7 +92,7 @@ export const MailSend = () => {
             </InputBox>
           </Section>
           <BtnBox>
-            <Btn type="submit">이메일 보내기</Btn>
+            <Btn type="submit">문의 하기</Btn>
           </BtnBox>
         </UseForm>
       </Container>
@@ -79,15 +104,12 @@ export default MailSend;
 
 const Wrapper = styled.section`
   position: relative;
-  width: calc(100% - 15px);
   height: 100%;
-  margin: 0 0 0 15px;
 `;
 const Container = styled.div`
   position: relative;
-  width: calc(100% - 15px);
-  height: calc(80vh - 30px);
-  margin: 10px 15px 0 0;
+  height: calc(75% - 25px);
+  margin: 24px 0 0 0;
   padding: 25px;
   background-color: transparent;
   border-radius: 16px;
@@ -98,7 +120,6 @@ const Container = styled.div`
 const UseForm = styled.form`
   position: relative;
   width: 60%;
-  height: 50%;
   background-color: #333333;
   margin: 20px auto;
   padding: 40px 0;

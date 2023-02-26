@@ -11,8 +11,9 @@ export const TopSection = ({ skill, description, status }: PropsTypes) => {
     <Container>
       <Content>
         <Title>Skill,</Title>
-        <Skill>{skill[0]}</Skill>
-        <Skill>{skill[1]}</Skill>
+        {skill.map((item, index) => {
+          return <Skill key={index}>{item}</Skill>;
+        })}
       </Content>
       <Content>
         <Title>Description,</Title>
@@ -30,12 +31,12 @@ export default TopSection;
 
 const Container = styled.section`
   position: relative;
-  width: calc(100% - 15px);
-  height: calc(20% - 10px);
+  height: calc(25% - 10px);
+  padding: 16px 20px;
   background-color: transparent;
   border-radius: 16px;
   box-sizing: border-box;
-  box-shadow: 4px 6px 24px 6px rgb(0 0 0 / 20%);
+  box-shadow: 2px 6px 8px 4px rgb(0 0 0 / 15%);
 `;
 
 const Content = styled.div`

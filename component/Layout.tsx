@@ -15,12 +15,13 @@ export default function Layout({ children }: PropsWithChildren<LayoutProps>) {
 
 const LayoutComponent = styled.div`
   display: flex;
+  position: relative;
+  height: calc(100vh - 72px);
+  padding: 36px 24px;
 `;
 
 const Section = styled.section`
   position: relative;
-  width: calc(100% - 15px);
-  height: calc(100vh - 40px);
-  padding: 20px 15px 20px 0;
-  /* margin: 20px 15px 20px 0; */
+  width: calc(100% - 48px);
+  height: 100%;
 `;
