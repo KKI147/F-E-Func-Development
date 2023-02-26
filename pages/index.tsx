@@ -1,4 +1,5 @@
 import Head from "next/head";
+import styled from "styled-components";
 
 export default function Home() {
   return (
@@ -9,6 +10,17 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Section>홈페이지</Section>
     </>
   );
 }
+
+const Section = styled.section`
+  position: relative;
+  width: calc(100% - 48px);
+  height: 100%;
+  background-color: transparent;
+  border-radius: 16px;
+  box-sizing: border-box;
+  box-shadow: 4px 6px 24px 6px rgb(0 0 0 / 20%);
+`;

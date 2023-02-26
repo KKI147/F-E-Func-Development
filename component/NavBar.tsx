@@ -47,7 +47,7 @@ export default function NavBar() {
             </Link>
           </List>
           <List>
-            <Link href="/real-time-soket">
+            <Link href="/intersection-observer">
               <div>Intersection observer</div>
             </Link>
           </List>
