@@ -1,8 +1,11 @@
 import Head from "next/head";
 import TopSection from "@/component/TopSection";
 import styled from "styled-components";
+import { Map, MapMarker } from "react-kakao-maps-sdk";
+import { useState } from "react";
 
 export const KakaoMapApi = () => {
+  const [position, setPosition] = useState({ lat: 0, lng: 0 });
   return (
     <>
       <Head>
@@ -11,10 +14,43 @@ export const KakaoMapApi = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Wrapper>
-        <TopSection skill={["", ""]} description={""} status={"개발예정"} />
-        <Container>Kakao-Map-Api</Container>
+        <TopSection
+          skill={["Kakao-Map-Api"]}
+          description={"카카오 맵"}
+          status={"개발완료"}
+        />
+        <Container>
+          <Map // 지도를 표시할 Container
+            center={{
+              // 지도의 중심좌표
+              lat: 37.566826,
+              lng: 126.9786567,
+            }}
+            style={{
+              width: "100%",
+              height: "550px",
+            }}
+            level={3} // 지도의 확대 레벨
+            onClick={(_t, mouseEvent) =>
+              setPosition({
+                lat: mouseEvent.latLng.getLat(),
+                lng: mouseEvent.latLng.getLng(),
+              })
+            }
+          >
+            {position && <MapMarker position={position} />}
+          </Map>
+          {position && (
+            <p>
+              {"클릭한 위치의 위도는 " +
+                position.lat +
+                " 이고, 경도는 " +
+                position.lng +
+                " 입니다"}
+            </p>
+          )}
+        </Container>
       </Wrapper>
     </>
   );

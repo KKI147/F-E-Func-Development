@@ -1,59 +1,102 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function NavBar() {
+  const router = useRouter();
+  console.log(router);
   return (
     <Container>
       <Wrapper>
         <Lists>
           <List>
             <Link href="/join">
-              <div>Join</div>
+              {router.asPath === "/join" ? (
+                <Hover>Join</Hover>
+              ) : (
+                <div>Join</div>
+              )}
             </Link>
           </List>
           <List>
             <Link href="login">
-              <div>Login</div>
+              {router.asPath === "/login" ? (
+                <Hover>Login</Hover>
+              ) : (
+                <div>Login</div>
+              )}
             </Link>
           </List>
           <List>
             <Link href="/file-upload">
-              <div>File Upload</div>
+              {router.asPath === "/file-upload" ? (
+                <Hover>File Upload</Hover>
+              ) : (
+                <div>File Upload</div>
+              )}
             </Link>
           </List>
           <List>
             <Link href="/file-download">
-              <div>File Download</div>
+              {router.asPath === "/file-download" ? (
+                <Hover>File Download</Hover>
+              ) : (
+                <div>File Download</div>
+              )}
             </Link>
           </List>
           <List>
             <Link href="/editor">
-              <div>Editor</div>
+              {router.asPath === "/editor" ? (
+                <Hover>Editor</Hover>
+              ) : (
+                <div>Editor</div>
+              )}
             </Link>
           </List>
           <List>
             <Link href="/mail-send">
-              <div>Mail Send</div>
+              {router.asPath === "/mail-send" ? (
+                <Hover>Mail Send</Hover>
+              ) : (
+                <div>Mail Send</div>
+              )}
             </Link>
           </List>
           <List>
             <Link href="/calendar">
-              <div>Calendar</div>
+              {router.asPath === "/calendar" ? (
+                <Hover>Calendar</Hover>
+              ) : (
+                <div>Calendar</div>
+              )}
             </Link>
           </List>
           <List>
             <Link href="/kakao-map-api">
-              <div>Kakao Map API</div>
+              {router.asPath === "/kakao-map-api" ? (
+                <Hover>Kakao Map API</Hover>
+              ) : (
+                <div>Kakao Map API</div>
+              )}
             </Link>
           </List>
           <List>
             <Link href="/intersection-observer">
-              <div>Intersection observer</div>
+              {router.asPath === "/intersection-observer" ? (
+                <Hover>Intersection observer</Hover>
+              ) : (
+                <div>Intersection observer</div>
+              )}
             </Link>
           </List>
           <List>
             <Link href="/loading-component">
-              <div>Loading Component</div>
+              {router.asPath === "/loading-component" ? (
+                <Hover>Loading Component</Hover>
+              ) : (
+                <div>Loading Component</div>
+              )}
             </Link>
           </List>
         </Lists>
@@ -83,6 +126,15 @@ const Wrapper = styled.nav`
 const Lists = styled.ul`
   width: 100%;
   position: relative;
+`;
+
+const Hover = styled.div`
+  width: 70%;
+  padding: 15px 96px 15px 40px;
+  color: #fff;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  background-color: #6098ff;
 `;
 const List = styled.li`
   width: 70%;
