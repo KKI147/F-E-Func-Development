@@ -19,7 +19,7 @@ const Section = styled.section`
   position: relative;
   width: calc(100% - 48px);
   height: 100%;
-  background-color: transparent;
+  background-color: #fff;
   border-radius: 16px;
   box-sizing: border-box;
   box-shadow: 4px 6px 24px 6px rgb(0 0 0 / 20%);

@@ -1,6 +1,7 @@
-import Head from "next/head";
-import TopSection from "@/component/TopSection";
 import styled from "styled-components";
+import Head from "next/head";
+import SectionContainer from "@/component/SectionContainer";
+import TopSection from "@/component/TopSection";
 
 export const Calendar = () => {
   return (
@@ -13,8 +14,8 @@ export const Calendar = () => {
       </Head>
 
       <Wrapper>
-        <TopSection skill={["", ""]} description={""} status={"개발예정"} />
-        <Container>Calendar</Container>
+        <TopSection skill={["", ""]} description={[""]} status={"개발예정"} />
+        <SectionContainer>Calendar</SectionContainer>
       </Wrapper>
     </>
   );
@@ -25,14 +26,4 @@ export default Calendar;
 const Wrapper = styled.section`
   position: relative;
   height: 100%;
-`;
-const Container = styled.div`
-  position: relative;
-  height: calc(75% - 25px);
-  margin: 24px 0 0 0;
-  padding: 25px;
-  background-color: transparent;
-  border-radius: 16px;
-  box-sizing: border-box;
-  box-shadow: 4px 6px 24px 6px rgb(0 0 0 / 20%);
 `;

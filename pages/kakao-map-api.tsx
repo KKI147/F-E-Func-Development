@@ -1,6 +1,7 @@
+import styled, { css } from "styled-components";
 import Head from "next/head";
+import SectionContainer from "@/component/SectionContainer";
 import TopSection from "@/component/TopSection";
-import styled from "styled-components";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { useState } from "react";
 
@@ -17,10 +18,17 @@ export const KakaoMapApi = () => {
       <Wrapper>
         <TopSection
           skill={["Kakao-Map-Api"]}
-          description={"카카오 맵"}
+          description={[
+            "카카오 맵",
+            "클릭한 위치의 위도는 " +
+              position.lat +
+              " 이고, 경도는 " +
+              position.lng +
+              " 입니다",
+          ]}
           status={"개발완료"}
         />
-        <Container>
+        <SectionContainer padding={0}>
           <Map // 지도를 표시할 Container
             center={{
               // 지도의 중심좌표
@@ -29,7 +37,7 @@ export const KakaoMapApi = () => {
             }}
             style={{
               width: "100%",
-              height: "550px",
+              height: "100%",
             }}
             level={3} // 지도의 확대 레벨
             onClick={(_t, mouseEvent) =>
@@ -41,16 +49,7 @@ export const KakaoMapApi = () => {
           >
             {position && <MapMarker position={position} />}
           </Map>
-          {position && (
-            <p>
-              {"클릭한 위치의 위도는 " +
-                position.lat +
-                " 이고, 경도는 " +
-                position.lng +
-                " 입니다"}
-            </p>
-          )}
-        </Container>
+        </SectionContainer>
       </Wrapper>
     </>
   );
@@ -61,14 +60,4 @@ export default KakaoMapApi;
 const Wrapper = styled.section`
   position: relative;
   height: 100%;
-`;
-const Container = styled.div`
-  position: relative;
-  height: calc(75% - 25px);
-  margin: 24px 0 0 0;
-  padding: 25px;
-  background-color: transparent;
-  border-radius: 16px;
-  box-sizing: border-box;
-  box-shadow: 4px 6px 24px 6px rgb(0 0 0 / 20%);
 `;

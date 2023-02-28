@@ -14,7 +14,7 @@ export default function NavBar() {
               {router.asPath === "/join" ? (
                 <Hover>Join</Hover>
               ) : (
-                <div>Join</div>
+                <Text>Join</Text>
               )}
             </Link>
           </List>
@@ -23,7 +23,7 @@ export default function NavBar() {
               {router.asPath === "/login" ? (
                 <Hover>Login</Hover>
               ) : (
-                <div>Login</div>
+                <Text>Login</Text>
               )}
             </Link>
           </List>
@@ -32,7 +32,7 @@ export default function NavBar() {
               {router.asPath === "/file-upload" ? (
                 <Hover>File Upload</Hover>
               ) : (
-                <div>File Upload</div>
+                <Text>File Upload</Text>
               )}
             </Link>
           </List>
@@ -41,7 +41,7 @@ export default function NavBar() {
               {router.asPath === "/file-download" ? (
                 <Hover>File Download</Hover>
               ) : (
-                <div>File Download</div>
+                <Text>File Download</Text>
               )}
             </Link>
           </List>
@@ -50,7 +50,7 @@ export default function NavBar() {
               {router.asPath === "/editor" ? (
                 <Hover>Editor</Hover>
               ) : (
-                <div>Editor</div>
+                <Text>Editor</Text>
               )}
             </Link>
           </List>
@@ -59,7 +59,7 @@ export default function NavBar() {
               {router.asPath === "/mail-send" ? (
                 <Hover>Mail Send</Hover>
               ) : (
-                <div>Mail Send</div>
+                <Text>Mail Send</Text>
               )}
             </Link>
           </List>
@@ -68,7 +68,7 @@ export default function NavBar() {
               {router.asPath === "/calendar" ? (
                 <Hover>Calendar</Hover>
               ) : (
-                <div>Calendar</div>
+                <Text>Calendar</Text>
               )}
             </Link>
           </List>
@@ -77,7 +77,7 @@ export default function NavBar() {
               {router.asPath === "/kakao-map-api" ? (
                 <Hover>Kakao Map API</Hover>
               ) : (
-                <div>Kakao Map API</div>
+                <Text>Kakao Map API</Text>
               )}
             </Link>
           </List>
@@ -86,16 +86,16 @@ export default function NavBar() {
               {router.asPath === "/intersection-observer" ? (
                 <Hover>Intersection observer</Hover>
               ) : (
-                <div>Intersection observer</div>
+                <Text>Intersection observer</Text>
               )}
             </Link>
           </List>
           <List>
-            <Link href="/loading-component">
-              {router.asPath === "/loading-component" ? (
+            <Link href="/loading">
+              {router.asPath === "/loading" ? (
                 <Hover>Loading Component</Hover>
               ) : (
-                <div>Loading Component</div>
+                <Text>Loading Component</Text>
               )}
             </Link>
           </List>
@@ -120,42 +120,44 @@ const Wrapper = styled.nav`
   position: relative;
   width: 100%;
   height: 100%;
-  font-size: 22px;
-  color: #9a9a9a; ;
+  font-size: 20px;
+  color: #c5c5c5; ;
 `;
 const Lists = styled.ul`
   width: 100%;
   position: relative;
 `;
+const List = styled.li`
+  width: 80%;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+`;
 
+const Text = styled.div`
+  margin: 10px 0;
+  padding: 16px 12px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  cursor: pointer;
+  :hover {
+    width: 100%;
+    padding: 16px 96px 16px 40px;
+    color: #fff;
+    -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+    transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+    background-color: #6098ff;
+  }
+`;
 const Hover = styled.div`
-  width: 70%;
-  padding: 15px 96px 15px 40px;
-  color: #fff;
+  width: 100%;
+  margin: 10px 0;
+  padding: 16px 96px 16px 40px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  color: #181818;
   -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
   transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
   background-color: #6098ff;
-`;
-const List = styled.li`
-  width: 70%;
-  border-top-right-radius: 16px;
-  border-bottom-right-radius: 16px;
-
-  & div {
-    padding: 15px 15px;
-    border-top-right-radius: 16px;
-    border-bottom-right-radius: 16px;
-    cursor: pointer;
-    :hover {
-      width: 70%;
-      /* height: 36px; */
-      padding: 15px 96px 15px 40px;
-      color: #fff;
-      -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
-      transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
-      background-color: #6098ff;
-    }
-  }
 `;
 const Copyright = styled.div`
   padding: 20px 20px;

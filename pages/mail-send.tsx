@@ -1,9 +1,10 @@
+import * as yup from "yup";
+import styled from "styled-components";
 import Head from "next/head";
+import SectionContainer from "@/component/SectionContainer";
 import TopSection from "@/component/TopSection";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import styled from "styled-components";
 import emailjs from "@emailjs/browser";
 import React, { useRef } from "react";
 
@@ -67,10 +68,10 @@ export const MailSend = () => {
       <Wrapper>
         <TopSection
           skill={["Email-JS", "React Hook-Form"]}
-          description={"이메일보내기 페이지"}
+          description={["이메일보내기 페이지"]}
           status={"개발완료"}
         />
-        <Container>
+        <SectionContainer>
           <UseForm ref={formRef} onSubmit={handleSubmit(onSubmit)}>
             <Title>문의 하기</Title>
             <Section>
@@ -104,7 +105,7 @@ export const MailSend = () => {
               <Btn type="submit">문의 하기</Btn>
             </BtnBox>
           </UseForm>
-        </Container>
+        </SectionContainer>
       </Wrapper>
     </>
   );

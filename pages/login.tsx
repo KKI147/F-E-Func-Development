@@ -1,9 +1,10 @@
+import * as yup from "yup";
+import styled from "styled-components";
 import Head from "next/head";
+import SectionContainer from "@/component/SectionContainer";
 import TopSection from "@/component/TopSection";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { post } from "../module/Api";
 
@@ -72,10 +73,10 @@ export const Login = () => {
       <Wrapper>
         <TopSection
           skill={["Axios", "React Hook-Form"]}
-          description={"로그인 페이지"}
+          description={["로그인 페이지"]}
           status={"개발완료"}
         />
-        <Container>
+        <SectionContainer>
           <UseForm onSubmit={handleSubmit(onSubmitHandler)}>
             <Title>로그인</Title>
             <Section>
@@ -109,10 +110,20 @@ export const Login = () => {
               {errors.password && <Message>{errors.password.message}</Message>}
             </Section>
             <BtnBox>
-              <Btn type="submit">로그인</Btn>
+              <JoinButton type="submit">로그인</JoinButton>
+            </BtnBox>
+            <Line />
+            <BtnBox>
+              <GoogleButton type="submit">구글 계정으로 로그인</GoogleButton>
+            </BtnBox>
+            <BtnBox>
+              <KakaoButton type="submit">카카오톡 계정으로 로그인</KakaoButton>
+            </BtnBox>
+            <BtnBox>
+              <NaverButton type="submit">네이버 계정으로 로그인</NaverButton>
             </BtnBox>
           </UseForm>
-        </Container>
+        </SectionContainer>
       </Wrapper>
     </>
   );
@@ -124,96 +135,141 @@ const Wrapper = styled.section`
   position: relative;
   height: 100%;
 `;
-const Container = styled.div`
-  position: relative;
-  height: calc(75% - 25px);
-  margin: 24px 0 0 0;
-  padding: 25px;
-  background-color: transparent;
-  border-radius: 16px;
-  box-sizing: border-box;
-  box-shadow: 4px 6px 24px 6px rgb(0 0 0 / 20%);
-`;
 
 const UseForm = styled.form`
   position: relative;
-  width: 50%;
-  height: 80%;
-  background-color: #333333;
-  margin: 20px auto;
-  padding: 40px 0;
+  width: 45%;
+  background-color: #fff;
+  margin: 0 auto;
   border-radius: 16px;
 `;
-
 const Title = styled.div`
-  margin: 12px 0 45px 0;
+  margin: 12px 0 15px 0;
   font-size: 26px;
   font-weight: 500;
   text-align: center;
-  color: #fff;
+  color: #1d3763;
 `;
-
 const InputBox = styled.div`
   position: relative;
-  width: 70%;
-  height: 50px;
-  margin: 0 auto 25px auto;
+  height: 46px;
+  margin: 10px auto 5px auto;
   padding: 5px 12px;
-  border: 1px solid #fff;
+  border: 1px solid #dedede;
   border-radius: 6px;
-  background-color: #333333;
-  color: #fff;
+  background-color: #fff;
+  color: #1d3763;
 `;
 const InputForm = styled.input`
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #333333;
+  top: 2px;
+  background-color: #fff;
   border: 0;
   outline: 0;
-  color: #fff;
+  color: #1d3763;
+
   ::placeholder {
     font-size: 14px;
-    font-weight: bold;
-  }
-`;
-
-const BtnBox = styled.div`
-  position: relative;
-  width: 75%;
-  margin: 25px auto 25px auto;
-`;
-const Btn = styled.button`
-  width: 100%;
-  height: 50px;
-  border-radius: 8px;
-  background-color: #fff;
-  color: #333333;
-  font-weight: bold;
-  cursor: pointer;
-  :hover {
-    background-color: #9a9a9a;
+    padding: 0 0 0 8px;
   }
 `;
 
 const Section = styled.div`
   position: relative;
-  margin: 0 0 40px 0;
+  width: 70%;
+  margin: 0 auto 20px auto;
 `;
 const LabelBox = styled.div`
   position: absolute;
   top: -10px;
-  left: 110px;
+
   padding: 0 10px;
-  background-color: #333333;
-  color: #fff;
+  background-color: #fff;
+  color: #1d3763;
   z-index: 5;
   border: 0;
   outline: 0;
 `;
 const Message = styled.div`
   position: relative;
-  left: 110px;
   color: #ff0000;
-  margin: 25px 0;
+`;
+
+const BtnBox = styled.div`
+  position: relative;
+  width: 70%;
+  margin: 20px auto 20px auto;
+`;
+
+const JoinButton = styled.button`
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #379fff;
+  color: #fff;
+  font-weight: bold;
+  border: 0;
+  cursor: pointer;
+  :hover {
+    background-color: #9a9a9a;
+  }
+`;
+
+const GoogleButton = styled.button`
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #fff;
+  color: #2c2c2c;
+  font-weight: bold;
+  border: 1px solid #cecece;
+  cursor: pointer;
+  :hover {
+    background-color: #9a9a9a;
+  }
+`;
+const KakaoButton = styled.button`
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #ffe812;
+  color: #2c2c2c;
+  font-weight: bold;
+  border: 0;
+  cursor: pointer;
+  :hover {
+    background-color: #9a9a9a;
+  }
+`;
+const NaverButton = styled.button`
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #03c75a;
+  color: #fff;
+  font-weight: bold;
+  border: 0;
+  cursor: pointer;
+  :hover {
+    background-color: #9a9a9a;
+  }
+`;
+
+const Line = styled.div`
+  width: 70%;
+  height: 0;
+  border-top: 1px solid #cdcdcd;
+  margin: 20px auto;
+  text-align: center;
+  ::before {
+    position: relative;
+    content: "또는";
+    font-weight: 500;
+    background-color: #ffffff;
+    color: #1d3763;
+    padding: 0 16px;
+    top: -10px;
+  }
 `;
