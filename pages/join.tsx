@@ -112,13 +112,13 @@ export const Join = () => {
                 <ImageBox>
                   <Image
                     src={"/images/google.png"}
-                    width={20}
-                    height={20}
+                    width={18}
+                    height={18}
                     alt="image"
                     loading="lazy"
                     style={{
-                      width: "25px",
-                      height: "25px",
+                      width: "20px",
+                      height: "20px",
                     }}
                   />
                 </ImageBox>
@@ -220,6 +220,7 @@ const JoinButton = styled.button`
   border-radius: 25px;
   background-color: #379fff;
   color: #fff;
+  font-size: 16px;
   font-weight: bold;
   border: 0;
   cursor: pointer;
@@ -228,6 +229,7 @@ const JoinButton = styled.button`
   }
 `;
 const ButtonText = styled.div`
+  font-size: 16px;
   color: #2c2c2c;
   font-weight: bold;
 `;

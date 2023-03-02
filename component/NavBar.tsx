@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 export default function NavBar() {
   const router = useRouter();
-  console.log(router);
   return (
     <Container>
       <Wrapper>
@@ -12,18 +11,18 @@ export default function NavBar() {
           <List>
             <Link href="/join">
               {router.asPath === "/join" ? (
-                <Hover>Join</Hover>
+                <Done>Join</Done>
               ) : (
-                <Text>Join</Text>
+                <DoneText>Join</DoneText>
               )}
             </Link>
           </List>
           <List>
             <Link href="login">
               {router.asPath === "/login" ? (
-                <Hover>Login</Hover>
+                <Done>Login</Done>
               ) : (
-                <Text>Login</Text>
+                <DoneText>Login</DoneText>
               )}
             </Link>
           </List>
@@ -57,7 +56,7 @@ export default function NavBar() {
           <List>
             <Link href="/mail-send">
               {router.asPath === "/mail-send" ? (
-                <Hover>Mail Send</Hover>
+                <Done>Mail Send</Done>
               ) : (
                 <Text>Mail Send</Text>
               )}
@@ -75,9 +74,9 @@ export default function NavBar() {
           <List>
             <Link href="/kakao-map-api">
               {router.asPath === "/kakao-map-api" ? (
-                <Hover>Kakao Map API</Hover>
+                <Done>Kakao Map API</Done>
               ) : (
-                <Text>Kakao Map API</Text>
+                <DoneText>Kakao Map API</DoneText>
               )}
             </Link>
           </List>
@@ -93,9 +92,9 @@ export default function NavBar() {
           <List>
             <Link href="/loading">
               {router.asPath === "/loading" ? (
-                <Hover>Loading Component</Hover>
+                <Done>Loading Component</Done>
               ) : (
-                <Text>Loading Component</Text>
+                <DoneText>Loading Component</DoneText>
               )}
             </Link>
           </List>
@@ -148,7 +147,36 @@ const Text = styled.div`
     background-color: #6098ff;
   }
 `;
+
+const DoneText = styled.div`
+  color: #181818;
+  margin: 10px 0;
+  padding: 16px 12px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  cursor: pointer;
+  :hover {
+    width: 100%;
+    padding: 16px 96px 16px 40px;
+    color: #181818;
+    -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+    transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+    background-color: #6098ff;
+  }
+`;
 const Hover = styled.div`
+  width: 100%;
+  margin: 10px 0;
+  padding: 16px 96px 16px 40px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  color: #fff;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  background-color: #6098ff;
+`;
+
+const Done = styled.div`
   width: 100%;
   margin: 10px 0;
   padding: 16px 96px 16px 40px;

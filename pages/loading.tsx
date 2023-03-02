@@ -2,6 +2,7 @@ import Head from "next/head";
 import TopSection from "@/component/TopSection";
 import styled from "styled-components";
 import SectionContainer from "@/component/SectionContainer";
+import LoadingComponent from "@/component/LoadingComponent";
 
 export const Loading = () => {
   return (
@@ -12,7 +13,6 @@ export const Loading = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Wrapper>
         <TopSection
           skill={["CSS"]}
@@ -20,7 +20,7 @@ export const Loading = () => {
           status={"개발완료"}
         />
         <SectionContainer>
-          <Spinner></Spinner>
+          <LoadingComponent />
         </SectionContainer>
       </Wrapper>
     </>
@@ -32,25 +32,4 @@ export default Loading;
 const Wrapper = styled.section`
   position: relative;
   height: 100%;
-`;
-
-const Spinner = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  /* margin: 0 auto; */
-  width: 160px;
-  height: 160px;
-  border: 24px solid rgba(255, 165, 0, 0.4);
-  border-top: 24px solid rgba(255, 165, 0, 1);
-  border-radius: 50%;
-  animation: spin 2s linear infinite;
-  @keyframes spin {
-    0% {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(360deg);
-    }
-  }
 `;

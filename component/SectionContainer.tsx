@@ -1,17 +1,14 @@
 import styled, { css } from "styled-components";
 
-const SectionContainer = ({ children }: any) => {
-  return <Container>{children}</Container>;
+const SectionContainer = ({ children, padding }: any) => {
+  return <Container padding={padding}>{children}</Container>;
 };
 
-interface PropsType {
-  map: string;
-}
-const Container = styled.div`
+const Container = styled.div<any>`
   position: relative;
   height: calc(77% - 25px);
   margin: 24px 0 0 0;
-  padding: ${(props) => (props ? "25px" : "0")};
+  padding: ${(props) => (props.padding ? props.padding : "25px")};
   background-color: #fff;
   border-radius: 16px;
   box-sizing: border-box;

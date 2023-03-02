@@ -28,7 +28,7 @@ export const KakaoMapApi = () => {
           ]}
           status={"개발완료"}
         />
-        <SectionContainer padding={0}>
+        <SectionContainer padding={"0px"}>
           <Map // 지도를 표시할 Container
             center={{
               // 지도의 중심좌표
@@ -38,6 +38,7 @@ export const KakaoMapApi = () => {
             style={{
               width: "100%",
               height: "100%",
+              borderRadius: "16px",
             }}
             level={3} // 지도의 확대 레벨
             onClick={(_t, mouseEvent) =>

@@ -14,8 +14,6 @@ export const Login = () => {
 
   useEffect(() => {
     if (localStorage !== null) {
-      console.log(localStorage);
-
       setId(localStorage.getItem("ID"));
       setPassword(localStorage.getItem("password"));
     }
@@ -53,7 +51,6 @@ export const Login = () => {
 
   const onSubmitHandler = (data: FormTypes) => {
     post("/join", data);
-    console.log(data.email);
     if (data.email === id && data.password === password) {
       alert("로그인 완료");
       reset();
