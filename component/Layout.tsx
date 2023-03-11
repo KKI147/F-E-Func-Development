@@ -2,16 +2,20 @@ import styled from "styled-components";
 import NavBar from "@/component/NavBar";
 import { PropsWithChildren, ReactNode } from "react";
 import TopSection from "./TopSection";
+import Media from "./Media";
 
 interface LayoutProps {}
 
 export default function Layout({ children }: PropsWithChildren<LayoutProps>) {
   console.log(children);
   return (
-    <LayoutComponent>
-      <NavBar />
-      <Section>{children}</Section>
-    </LayoutComponent>
+    <>
+      <Media />
+      <LayoutComponent>
+        <NavBar />
+        <Section>{children}</Section>
+      </LayoutComponent>
+    </>
   );
 }
 

@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Head from "next/head";
 import SectionContainer from "@/component/SectionContainer";
 import TopSection from "@/component/TopSection";
@@ -7,6 +7,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { post } from "../module/Api";
 import Image from "next/image";
+
+interface CssType {
+  variant: string;
+}
 
 export const Join = () => {
   interface FormTypes {
@@ -108,7 +112,7 @@ export const Join = () => {
             </BtnBox>
             <Line />
             <BtnBox>
-              <GoogleButton type="submit">
+              <SocialButton variant="google" type="button">
                 <ImageBox>
                   <Image
                     src={"/images/google.png"}
@@ -122,16 +126,56 @@ export const Join = () => {
                     }}
                   />
                 </ImageBox>
-                <ButtonText>구글 계정으로 회원가입</ButtonText>
-              </GoogleButton>
+                <ButtonText
+                  onClick={() => window.alert("개발되지 않은 기능입니다.")}
+                >
+                  구글 계정으로 회원가입
+                </ButtonText>
+              </SocialButton>
             </BtnBox>
             <BtnBox>
-              <KakaoButton type="submit">
-                카카오톡 계정으로 회원가입
-              </KakaoButton>
+              <SocialButton variant="kakao" type="button">
+                <ImageBox>
+                  <Image
+                    src={"/images/kakao.png"}
+                    width={18}
+                    height={18}
+                    alt="image"
+                    loading="lazy"
+                    style={{
+                      width: "20px",
+                      height: "20px",
+                    }}
+                  />
+                </ImageBox>
+                <ButtonText
+                  onClick={() => window.alert("개발되지 않은 기능입니다.")}
+                >
+                  카카오톡 계정으로 회원가입
+                </ButtonText>
+              </SocialButton>
             </BtnBox>
             <BtnBox>
-              <NaverButton type="submit">네이버 계정으로 회원가입</NaverButton>
+              <SocialButton variant="naver" type="button">
+                <ImageBox>
+                  <Image
+                    src={"/images/naver.png"}
+                    width={18}
+                    height={18}
+                    alt="image"
+                    loading="lazy"
+                    style={{
+                      width: "20px",
+                      height: "20px",
+                    }}
+                  />
+                </ImageBox>
+                <ButtonText
+                  onClick={() => window.alert("개발되지 않은 기능입니다.")}
+                >
+                  네이버 계정으로 회원가입
+                </ButtonText>
+              </SocialButton>
             </BtnBox>
           </UseForm>
         </SectionContainer>
@@ -180,7 +224,6 @@ const InputForm = styled.input`
   border: 0;
   outline: 0;
   color: #1d3763;
-
   ::placeholder {
     font-size: 14px;
     padding: 0 0 0 8px;
@@ -195,7 +238,6 @@ const Section = styled.div`
 const LabelBox = styled.div`
   position: absolute;
   top: -10px;
-
   padding: 0 10px;
   background-color: #fff;
   color: #1d3763;
@@ -211,7 +253,7 @@ const Message = styled.div`
 const BtnBox = styled.div`
   position: relative;
   width: 70%;
-  margin: 20px auto 20px auto;
+  margin: 20px auto;
 `;
 
 const JoinButton = styled.button`
@@ -224,9 +266,6 @@ const JoinButton = styled.button`
   font-weight: bold;
   border: 0;
   cursor: pointer;
-  :hover {
-    background-color: #9a9a9a;
-  }
 `;
 const ButtonText = styled.div`
   font-size: 16px;
@@ -238,43 +277,34 @@ const ImageBox = styled.div`
   left: 20px;
 `;
 
-const GoogleButton = styled.button`
+const SocialButton = styled.button`
   width: 100%;
   height: 50px;
   border-radius: 25px;
-  background-color: #fff;
-  border: 1px solid #cecece;
   cursor: pointer;
-  :hover {
-    background-color: #9a9a9a;
-  }
-`;
-
-const KakaoButton = styled.button`
-  width: 100%;
-  height: 50px;
-  border-radius: 25px;
-  background-color: #ffe812;
-  color: #2c2c2c;
-  font-weight: bold;
-  border: 0;
-  cursor: pointer;
-  :hover {
-    background-color: #9a9a9a;
-  }
-`;
-const NaverButton = styled.button`
-  width: 100%;
-  height: 50px;
-  border-radius: 25px;
-  background-color: #03c75a;
-  color: #fff;
-  font-weight: bold;
-  border: 0;
-  cursor: pointer;
-  :hover {
-    background-color: #9a9a9a;
-  }
+  ${({ variant }: CssType) => {
+    switch (variant) {
+      case "google":
+        return css`
+          background-color: #fff;
+          border: 1px solid #cecece;
+        `;
+      case "kakao":
+        return css`
+          background-color: #ffe812;
+          color: #2c2c2c;
+          border: 0;
+        `;
+      case "naver":
+        return css`
+          background-color: #03c75a;
+          color: #fff;
+          border: 0;
+        `;
+      default:
+        break;
+    }
+  }}
 `;
 
 const Line = styled.div`

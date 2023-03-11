@@ -2,8 +2,54 @@ import styled from "styled-components";
 import Head from "next/head";
 import SectionContainer from "@/component/SectionContainer";
 import TopSection from "@/component/TopSection";
+import { useState, useEffect } from "react";
 
+interface FormType {
+  file: string;
+  type: string;
+}
 export const FileUpload = () => {
+  // const uploadFile = async (file: string) => {
+  //   const formData = new FormData();
+  //   formData.append("file", file);
+
+  //   const res = await fetch("/api/upload", {
+  //     method: "POST",
+  //     body: formData,
+  //   });
+  //   console.log(res);
+  // };
+  // string | null 형식의 type이 오류가 났음
+  // FileList 라는 형식을 꼼꼼히 체크하지 않아서 formdata 가  어떤 형식인지 정확하게 체크못함
+  //
+  const [file, setFile] = useState<FileList>();
+  const [image, setImage] = useState<any>();
+
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+
+    if (files !== null && files.length > 0) {
+      console.log(files[0]);
+      setFile(files);
+    }
+  };
+
+  const prevImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let reader = new FileReader();
+    if (e.target.files !== null) {
+      if (e.target.files) {
+        reader.readAsDataURL(e.target.files[0]);
+      }
+      reader.onloadend = () => {
+        const imageUrl = reader.result;
+        console.log(imageUrl);
+        if (imageUrl) {
+          setImage([{ ...image }]);
+        }
+      };
+    }
+  };
+  console.log(image);
   return (
     <>
       <Head>
@@ -15,7 +61,20 @@ export const FileUpload = () => {
 
       <Wrapper>
         <TopSection skill={["", ""]} description={[""]} status={"개발예정"} />
-        <SectionContainer>File-Upload</SectionContainer>
+        <SectionContainer>
+          <div>
+            <File htmlFor="file">업로드</File>
+
+            <UseInput
+              id="file"
+              type="file"
+              multiple
+              onChange={onChangeHandler}
+            />
+
+            <ImagePreview>1{image}</ImagePreview>
+          </div>
+        </SectionContainer>
       </Wrapper>
     </>
   );
@@ -26,4 +85,25 @@ export default FileUpload;
 const Wrapper = styled.section`
   position: relative;
   height: 100%;
+`;
+
+const File = styled.label`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+
+  border: 1px dashed #181818;
+  cursor: pointer;
+`;
+
+const UseInput = styled.input`
+  display: none;
+`;
+
+const ImagePreview = styled.div`
+  display: flex;
+  width: 300px;
+  height: 300px;
 `;

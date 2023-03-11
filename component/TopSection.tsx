@@ -6,7 +6,7 @@ interface PropsTypes {
 }
 
 export const TopSection = ({ skill, description, status }: PropsTypes) => {
-  localStorage.setItem("Status", status);
+  // localStorage.setItem("Status", status);
   return (
     <Container>
       <Content>

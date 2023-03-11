@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -11,25 +11,25 @@ export default function NavBar() {
           <List>
             <Link href="/join">
               {router.asPath === "/join" ? (
-                <Done>Join</Done>
+                <Hover color="#fff">Join</Hover>
               ) : (
-                <DoneText>Join</DoneText>
+                <Text color="#181818">Join</Text>
               )}
             </Link>
           </List>
           <List>
             <Link href="login">
               {router.asPath === "/login" ? (
-                <Done>Login</Done>
+                <Hover color="#fff">Login</Hover>
               ) : (
-                <DoneText>Login</DoneText>
+                <Text color="#181818">Login</Text>
               )}
             </Link>
           </List>
           <List>
             <Link href="/file-upload">
               {router.asPath === "/file-upload" ? (
-                <Hover>File Upload</Hover>
+                <Hover color="#fff">File Upload</Hover>
               ) : (
                 <Text>File Upload</Text>
               )}
@@ -38,7 +38,7 @@ export default function NavBar() {
           <List>
             <Link href="/file-download">
               {router.asPath === "/file-download" ? (
-                <Hover>File Download</Hover>
+                <Hover color="#fff">File Download</Hover>
               ) : (
                 <Text>File Download</Text>
               )}
@@ -47,7 +47,7 @@ export default function NavBar() {
           <List>
             <Link href="/editor">
               {router.asPath === "/editor" ? (
-                <Hover>Editor</Hover>
+                <Hover color="#fff">Editor</Hover>
               ) : (
                 <Text>Editor</Text>
               )}
@@ -56,16 +56,16 @@ export default function NavBar() {
           <List>
             <Link href="/mail-send">
               {router.asPath === "/mail-send" ? (
-                <Done>Mail Send</Done>
+                <Hover color="#fff">Mail Send</Hover>
               ) : (
-                <Text>Mail Send</Text>
+                <Text color="#181818">Mail Send</Text>
               )}
             </Link>
           </List>
           <List>
             <Link href="/calendar">
               {router.asPath === "/calendar" ? (
-                <Hover>Calendar</Hover>
+                <Hover color="#fff">Calendar</Hover>
               ) : (
                 <Text>Calendar</Text>
               )}
@@ -74,16 +74,16 @@ export default function NavBar() {
           <List>
             <Link href="/kakao-map-api">
               {router.asPath === "/kakao-map-api" ? (
-                <Done>Kakao Map API</Done>
+                <Hover color="#fff">Kakao Map API</Hover>
               ) : (
-                <DoneText>Kakao Map API</DoneText>
+                <Text color="#181818">Kakao Map API</Text>
               )}
             </Link>
           </List>
           <List>
             <Link href="/intersection-observer">
               {router.asPath === "/intersection-observer" ? (
-                <Hover>Intersection observer</Hover>
+                <Hover color="#fff">Intersection observer</Hover>
               ) : (
                 <Text>Intersection observer</Text>
               )}
@@ -92,9 +92,9 @@ export default function NavBar() {
           <List>
             <Link href="/loading">
               {router.asPath === "/loading" ? (
-                <Done>Loading Component</Done>
+                <Hover color="#fff">Loading Component</Hover>
               ) : (
-                <DoneText>Loading Component</DoneText>
+                <Text color="#181818">Loading Component</Text>
               )}
             </Link>
           </List>
@@ -132,61 +132,62 @@ const List = styled.li`
   border-bottom-right-radius: 16px;
 `;
 
-const Text = styled.div`
-  margin: 10px 0;
-  padding: 16px 12px;
-  border-top-right-radius: 16px;
-  border-bottom-right-radius: 16px;
-  cursor: pointer;
-  :hover {
-    width: 100%;
-    padding: 16px 96px 16px 40px;
-    color: #fff;
-    -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
-    transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
-    background-color: #6098ff;
-  }
-`;
-
-const DoneText = styled.div`
-  color: #181818;
-  margin: 10px 0;
-  padding: 16px 12px;
-  border-top-right-radius: 16px;
-  border-bottom-right-radius: 16px;
-  cursor: pointer;
-  :hover {
-    width: 100%;
-    padding: 16px 96px 16px 40px;
-    color: #181818;
-    -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
-    transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
-    background-color: #6098ff;
-  }
-`;
+// const Done = styled.div`
+//   width: 100%;
+//   margin: 10px 0;
+//   padding: 16px 96px 16px 40px;
+//   border-top-right-radius: 16px;
+//   border-bottom-right-radius: 16px;
+//   color: #181818;
+//   -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+//   transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+//   background-color: #6098ff;
+// `;
+//  ${(props) => (props.padding ? props.padding : "25px")};
 const Hover = styled.div`
   width: 100%;
   margin: 10px 0;
   padding: 16px 96px 16px 40px;
   border-top-right-radius: 16px;
   border-bottom-right-radius: 16px;
-  color: #fff;
+  color: ${(props) => (props.color ? props.color : "#181818")};
   -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
   transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
   background-color: #6098ff;
 `;
-
-const Done = styled.div`
-  width: 100%;
+const Text = styled.div`
   margin: 10px 0;
-  padding: 16px 96px 16px 40px;
+  padding: 16px 12px;
   border-top-right-radius: 16px;
   border-bottom-right-radius: 16px;
-  color: #181818;
-  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
-  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
-  background-color: #6098ff;
+  color: ${(props) => (props.color ? props.color : "#c5c5c5")};
+  cursor: pointer;
+  :hover {
+    width: 100%;
+    padding: 16px 96px 16px 40px;
+    color: ${(props) => (props.color ? props.color : "#c5c5c5")};
+    -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+    transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+    background-color: #6098ff;
+  }
 `;
+// const DoneText = styled.div`
+//   color: #181818;
+//   margin: 10px 0;
+//   padding: 16px 12px;
+//   border-top-right-radius: 16px;
+//   border-bottom-right-radius: 16px;
+//   cursor: pointer;
+//   :hover {
+//     width: 100%;
+//     padding: 16px 96px 16px 40px;
+//     color: #181818;
+//     -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+//     transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+//     background-color: #6098ff;
+//   }
+// `;
+
 const Copyright = styled.div`
   padding: 20px 20px;
   font-size: 18px;
