@@ -7,7 +7,6 @@ import Media from "./Media";
 interface LayoutProps {}
 
 export default function Layout({ children }: PropsWithChildren<LayoutProps>) {
-  console.log(children);
   return (
     <>
       <Media />

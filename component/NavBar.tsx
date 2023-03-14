@@ -31,7 +31,7 @@ export default function NavBar() {
               {router.asPath === "/file-upload" ? (
                 <Hover color="#fff">File Upload</Hover>
               ) : (
-                <Text>File Upload</Text>
+                <Text color="#181818">File Upload</Text>
               )}
             </Link>
           </List>

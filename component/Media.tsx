@@ -18,7 +18,7 @@ export default function Media() {
 
 const Layout = styled.div`
   display: none;
-  @media (max-width: 1500px) {
+  @media (max-width: 1200px) {
     display: block;
     position: fixed;
     width: 100%;

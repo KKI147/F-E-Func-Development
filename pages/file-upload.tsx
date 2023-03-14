@@ -3,53 +3,45 @@ import Head from "next/head";
 import SectionContainer from "@/component/SectionContainer";
 import TopSection from "@/component/TopSection";
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import { uploadPost } from "@/module/Api";
 
-interface FormType {
-  file: string;
-  type: string;
-}
 export const FileUpload = () => {
-  // const uploadFile = async (file: string) => {
-  //   const formData = new FormData();
-  //   formData.append("file", file);
+  const [image, setImage] = useState("");
 
-  //   const res = await fetch("/api/upload", {
-  //     method: "POST",
-  //     body: formData,
-  //   });
-  //   console.log(res);
-  // };
-  // string | null 형식의 type이 오류가 났음
-  // FileList 라는 형식을 꼼꼼히 체크하지 않아서 formdata 가  어떤 형식인지 정확하게 체크못함
-  //
-  const [file, setFile] = useState<FileList>();
-  const [image, setImage] = useState<any>();
-
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-
-    if (files !== null && files.length > 0) {
-      console.log(files[0]);
-      setFile(files);
-    }
-  };
-
-  const prevImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let reader = new FileReader();
+  const onChangeHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files !== null) {
-      if (e.target.files) {
-        reader.readAsDataURL(e.target.files[0]);
+      const file: any = e.target.files[0];
+
+      const formData = new FormData();
+      formData.append("file", file);
+      const res: any = await uploadPost("/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      // const status: number = res.status
+
+      // const filter = reulst.split("");
+      const reulst = res.data.file?.mimetype.split("/")[1];
+      if (
+        (res.status === 200 &&
+          res.data.file?.mimetype.split("/")[1] === "jpg") ||
+        res.data.file?.mimetype.split("/")[1] === "png" ||
+        res.data.file?.mimetype.split("/")[1] === "jpeg" ||
+        res.data.file?.mimetype.split("/")[1] === "gif" ||
+        res.data.file?.mimetype.split("/")[1] === "webp"
+      ) {
+        setImage(URL.createObjectURL(e.target.files[0]));
+        console.log(reulst);
+        alert("사진이 등록되었습니다.");
+      } else {
+        alert(
+          "등록에 실패하였습니다, jpg,jpeg,png,gif,webp 파일만 업로드 가능합니다."
+        );
       }
-      reader.onloadend = () => {
-        const imageUrl = reader.result;
-        console.log(imageUrl);
-        if (imageUrl) {
-          setImage([{ ...image }]);
-        }
-      };
     }
   };
-  console.log(image);
+
   return (
     <>
       <Head>
@@ -60,20 +52,33 @@ export const FileUpload = () => {
       </Head>
 
       <Wrapper>
-        <TopSection skill={["", ""]} description={[""]} status={"개발예정"} />
+        <TopSection
+          skill={["multer", "nextConnect"]}
+          description={[
+            "nextConnect와 multer를 활용해 local-stroage를 만든후 image를 저장합니다.",
+          ]}
+          status={"개발완료"}
+        />
         <SectionContainer>
-          <div>
-            <File htmlFor="file">업로드</File>
+          <ImageBox>
+            <Image
+              src={"" || image}
+              alt="image"
+              loading="lazy"
+              width={50}
+              height={50}
+              style={{}}
+            />
+
+            <LabelBox htmlFor="file">사진 등록</LabelBox>
 
             <UseInput
               id="file"
               type="file"
-              multiple
+              accept="image/*"
               onChange={onChangeHandler}
             />
-
-            <ImagePreview>1{image}</ImagePreview>
-          </div>
+          </ImageBox>
         </SectionContainer>
       </Wrapper>
     </>
@@ -87,23 +92,35 @@ const Wrapper = styled.section`
   height: 100%;
 `;
 
-const File = styled.label`
+const ImageBox = styled.div`
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ImagePreview = styled.div`
+  /* display: flex; */
+  /* position: relative;
+  width: 100%;
+  height: 80%; */
+  /* margin: 0 15px; */
+`;
+
+const LabelBox = styled.label`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 300px;
-
+  width: 100px;
+  height: 50px;
+  margin: 0 0 0 20px;
   border: 1px dashed #181818;
   cursor: pointer;
 `;
 
 const UseInput = styled.input`
   display: none;
-`;
-
-const ImagePreview = styled.div`
-  display: flex;
-  width: 300px;
-  height: 300px;
 `;

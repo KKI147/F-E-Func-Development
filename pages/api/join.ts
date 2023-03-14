@@ -12,5 +12,5 @@ export default function handler(
 ) {
   res
     .status(200)
-    .json({ email: req.body.join?.email, password: req.body.join?.password });
+    .json({ email: req.body.data.email, password: req.body.data.password });
 }
