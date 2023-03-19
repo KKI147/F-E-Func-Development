@@ -1,6 +1,6 @@
 # Developer
 
-## _Todo-List_
+## _F-E-Func-Development_
 
 ### 🔗[페이지 이동하기]()
 
@@ -19,6 +19,18 @@
 
 ### **❗ Features**
 
-- React Hook form, yup를 이용한 회원가입 개발
-- 입력값 검증 및 로그인 개발
-- 간단한 입력폼의 정보를 React Hook Form, Email-JS를 통한 메일전송 개발
+<br>
+<div>
+‣ 개발 완료
+</div>
+<div>‣ React Hook form, yup를 이용한 회원가입 및 로그인 개발</div>
+<div>‣ FormData 및 Multer를 사용한 첨부파일 업로드 개발</div>
+<div>‣ 간단한 입력폼의 정보를 React Hook Form, Email-JS를 통한 메일전송 개발</div>
+<div>‣ Kakao Map API Service를 통한 Map Marker 개발</div>
+<div>‣ boolean값에 따른 Loading Component 개발</div>
+
+<br>
+<div>‣ 개발 예정</div>
+<div>‣ FormData 및 Multer를 사용한 첨부파일 다운로드 개발예정</div>
+<div>‣ React-Sun-Editor를 사용한 Editor Service 개발예정</div>
+<div>‣ React-Calender 개발예정</div>
