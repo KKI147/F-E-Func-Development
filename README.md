@@ -15,9 +15,8 @@
  <img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white">
  </div>
 <br>
-### **❗ Features**
 
-<br>
+### **❗ Features**
 <div>
 ‣ 개발 완료
 </div>
