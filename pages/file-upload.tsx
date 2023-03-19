@@ -21,7 +21,7 @@ export const FileUpload = () => {
       ) {
         const formData = new FormData();
         formData.append("file", file);
-        const res: any = await uploadPost("/upload", formData, {
+        const res: any = await uploadPost("/api/upload", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         setImage(URL.createObjectURL(e.target.files[0]));
