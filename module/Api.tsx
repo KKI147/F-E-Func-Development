@@ -51,6 +51,9 @@ export const post = async (url: string, data: object) => {
   return await axios.post<FormTypes>(API_URL + url, { data });
 };
 export const uploadPost = async (url: string, data: any, headers: any) => {
+  console.log(API_URL);
+  console.log(url);
+  console.log(API_URL + url);
   return await axios.post<any>(API_URL + url, data, headers);
 };
 
