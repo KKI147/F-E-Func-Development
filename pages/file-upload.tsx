@@ -2,42 +2,47 @@ import styled from "styled-components";
 import Head from "next/head";
 import SectionContainer from "@/component/SectionContainer";
 import TopSection from "@/component/TopSection";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { uploadPost } from "@/module/Api";
 
 export const FileUpload = () => {
   const [image, setImage] = useState("");
-
   const onChangeHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files !== null) {
       const file: any = e.target.files[0];
 
-      const formData = new FormData();
-      formData.append("file", file);
-      const res: any = await uploadPost("/upload", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      console.log(file);
 
-      // const status: number = res.status
+      const extension = file.type.split("/")[1];
 
-      // const filter = reulst.split("");
-      const reulst = res.data.file?.mimetype.split("/")[1];
+      console.log(typeof extension);
+
+      console.log(
+        extension === "jpg" ||
+          extension === "png" ||
+          extension === "jpeg" ||
+          extension === "gif" ||
+          extension === "webp"
+      );
+
       if (
-        (res.status === 200 &&
-          res.data.file?.mimetype.split("/")[1] === "jpg") ||
-        res.data.file?.mimetype.split("/")[1] === "png" ||
-        res.data.file?.mimetype.split("/")[1] === "jpeg" ||
-        res.data.file?.mimetype.split("/")[1] === "gif" ||
-        res.data.file?.mimetype.split("/")[1] === "webp"
+        extension === "jpg" ||
+        extension === "png" ||
+        extension === "jpeg" ||
+        extension === "gif" ||
+        extension === "webp"
       ) {
+        const formData = new FormData();
+        formData.append("file", file);
+        const res: any = await uploadPost("/upload", formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+        console.log(image);
         setImage(URL.createObjectURL(e.target.files[0]));
-        console.log(reulst);
         alert("사진이 등록되었습니다.");
       } else {
-        alert(
-          "등록에 실패하였습니다, jpg,jpeg,png,gif,webp 파일만 업로드 가능합니다."
-        );
+        alert("등록에 실패하였습니다.\n관리자에게 문의해 주세요");
       }
     }
   };
@@ -62,7 +67,7 @@ export const FileUpload = () => {
         <SectionContainer>
           <ImageBox>
             <Image
-              src={"" || image}
+              src={image || "/next.svg"}
               alt="image"
               loading="lazy"
               width={50}

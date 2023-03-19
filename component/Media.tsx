@@ -9,7 +9,7 @@ export default function Media() {
           <div>
             브라우저 크기 해상도를 줄이거나&#40; ctrl &#43; &#45; &#41; &#44;
           </div>
-          <div>최소 1500px &#42; 580px 이상의 환경에서 접속해주세요.</div>
+          <div>최소 1200px &#42; 580px 이상의 환경에서 접속해주세요.</div>
         </div>
       </ContentBox>
     </Layout>

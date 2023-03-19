@@ -54,6 +54,10 @@ export const uploadPost = async (url: string, data: any, headers: any) => {
   return await axios.post<any>(API_URL + url, data, headers);
 };
 
+export const downloadGet = async (url: string, data: any) => {
+  return await axios.get<any>(API_URL + url, data);
+};
+
 export const put = async (url: string, data: object) => {
   return await axios.put<FormTypes>(API_URL + url, { data });
 };

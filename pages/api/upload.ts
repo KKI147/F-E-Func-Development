@@ -11,30 +11,8 @@ const storage = multer.diskStorage({
     const nowDate = dayjs(Date.now()).format("YYMMDDHHMM");
     cb(null, `${nowDate}_${file.originalname}`);
   },
-  // fileFilter: function (req: any, file: any, callback: any) {
-  //   const ext = path.extname(file.originalname);
-  //   if (ext !== ".png" && ext !== ".jpg" && ext !== ".jpeg") {
-  //     return callback(new Error("PNG, JPG만 업로드하세요"));
-  //   }
-  //   callback(null, true);
-  // },
-  //   fileFilter = (req, file, cb) => {
-  //     const typeArray = file.mimetype.split('/');
-  //     const fileType = typeArray[1];
-
-  //     if (fileType == 'jpg' || fileType == 'png' || fileType == 'jpeg' || fileType == 'gif' || fileType == 'webp') {
-  //         req.fileValidationError = null;
-  //         cb(null, true);
-  //     } else {
-  //         req.fileValidationError = "jpg,jpeg,png,gif,webp 파일만 업로드 가능합니다.";
-  //         cb(null, false)
-  //     }
-  // }
-  //   limits: {
-  //     fileSize: 1024 * 1024,
-  //   },
 });
-
+console.log("서버");
 const fileFilter = (req: any, file: any, cb: any) => {
   const typeArray = file.mimetype.split("/");
   const fileType = typeArray[1];

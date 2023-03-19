@@ -35,7 +35,7 @@ const Container = styled.section`
   position: relative;
   height: calc(23% - 10px);
   padding: 16px 20px;
-  background-color: transparent;
+  background-color: #fff;
   border-radius: 16px;
   box-sizing: border-box;
   box-shadow: 2px 6px 8px 4px rgb(0 0 0 / 15%);
