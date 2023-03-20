@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 
 const storage: any = multer.diskStorage({
   destination: function (req, file, cb) {
-    const uploadPath: string = path.join(__dirname, "./uploads");
+    const uploadPath: string = path.join("./uploads");
 
     if (!existsSync(uploadPath)) {
       mkdirSync(uploadPath, { recursive: true });
