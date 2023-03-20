@@ -45,7 +45,7 @@ export const Join = () => {
   });
 
   const onSubmitHandler = (data: FormTypes) => {
-    post("/join", data);
+    post("/api/join", data);
 
     const id = data.email;
     const password = data.password;
@@ -226,7 +226,7 @@ const InputForm = styled.input`
   color: #1d3763;
   ::placeholder {
     font-size: 14px;
-    padding: 0 0 0 8px;
+    padding: 0 0 0 2px;
   }
 `;
 

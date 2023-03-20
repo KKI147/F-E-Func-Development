@@ -50,7 +50,7 @@ export const get = async (url: string, data: object) => {
 };
 
 export const post = async (url: string, data: object) => {
-  return await axios.post<FormTypes>(API_URL + url, { data });
+  return await axios.post<FormTypes>(url, { data });
 };
 export const uploadPost = async (url: string, data: any, headers: any) => {
   return await axios.post<any>(url, data, headers);

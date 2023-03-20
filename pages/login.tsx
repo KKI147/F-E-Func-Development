@@ -55,7 +55,7 @@ export const Login = () => {
   });
 
   const onSubmitHandler = (data: FormTypes) => {
-    post("/join", data);
+    post("/api/join", data);
     if (data.email === id && data.password === password) {
       alert("로그인 완료");
       reset();
@@ -231,7 +231,7 @@ const InputForm = styled.input`
 
   ::placeholder {
     font-size: 14px;
-    padding: 0 0 0 8px;
+    padding: 0 0 0 2px;
   }
 `;
 
