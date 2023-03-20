@@ -1,8 +1,21 @@
-# F-E-Func-Development
+# 프로젝트 목적
+프론트 개발자가 자주 사용하는 서비스를 학습하고 개발하보는 과정
+
+## 목표
+<ul>
+<li>로그인 및 회원가입</li>
+<li>파일 업로드 및 다운로드</li>
+<li>마크다운 문법을 적용한 에디터기능</li>
+<li>메일 보내기</li>
+<li>달력</li>
+<li>kakao map</li>
+<li>intersection observer</li>
+<li>loading component</li>
+</ul>
 
 ### 🔗[페이지 이동하기](https://f-e-func-development.vercel.app/)
 
-## **🛠️ Stacks**
+## **🛠️ 스택**
 
 <div>
 <img src="https://img.shields.io/badge/html-1572B6?style=for-the-badge&logo=html5&logoColor=white"> 
@@ -16,18 +29,19 @@
  </div>
 <br>
 
-### **❗ Features**
-<div>
-‣ 개발 완료
-</div>
-<div>‣ React Hook form, yup를 이용한 회원가입 및 로그인 개발</div>
-<div>‣ FormData 및 Multer를 사용한 첨부파일 업로드 개발</div>
-<div>‣ 간단한 입력폼의 정보를 React Hook Form, Email-JS를 통한 메일전송 개발</div>
-<div>‣ Kakao Map API Service를 통한 Map Marker 개발</div>
-<div>‣ boolean값에 따른 Loading Component 개발</div>
+## **❗ 문제상황 & 해결**
+<ul>
+ <li>이메일 형식과 비밀번호 형식을 따로 검증하니 코드가 길어지는 현상이 발생</li>
+ <div>ㄴ yup hook을 통해서 통합해서 관리</div>
+ <li>email을 보내면 내용과 보낸이의 정보가 명확하게 전달 되지 않음
+</li>
+ <div>ㄴ email js의 default template의 양식을 작성하여 보낸이와 받는이 모두에게 내용을 전달하게 설정</div>
+ <li>공통 css에서 개별적으로 다른 css적용을 위해 props를 설정할때 인식을 못하는 경우 발생
+</li>
+ <div>ㄴ css props type을 설정하여 tpye error 해결</div>
+ </ul>
 
-<br>
-<div>‣ 개발 예정</div>
-<div>‣ FormData 및 Multer를 사용한 첨부파일 다운로드 개발예정</div>
-<div>‣ React-Sun-Editor를 사용한 Editor Service 개발예정</div>
-<div>‣ React-Calender 개발예정</div>
+## **📌 회고**
+<ul>
+ 
+ </ul>
