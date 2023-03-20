@@ -1,8 +1,8 @@
 # F-E-Func-Development
 
-### 🔗[페이지 이동하기](https://f-e-func-development.vercel.app/)
+## 🔗[페이지 이동하기](https://f-e-func-development.vercel.app/)
 
-### **🛠️ Stacks**
+## **🛠️ Stacks**
 
 <div>
 <img src="https://img.shields.io/badge/html-1572B6?style=for-the-badge&logo=html5&logoColor=white"> 
