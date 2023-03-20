@@ -7,8 +7,10 @@ import dayjs from "dayjs";
 const storage: any = multer.diskStorage({
   destination: function (req, file, cb) {
     const uploadPath: string = "uploads";
+    console.log("파일 시스템");
 
     if (!existsSync(uploadPath)) {
+      console.log(uploadPath);
       mkdirSync(uploadPath, { recursive: true });
     }
 
