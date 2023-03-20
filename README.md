@@ -34,10 +34,10 @@
  
  <li>이메일 형식과 비밀번호 형식을 따로 검증하니 코드가 길어지는 현상이 발생</li>
  <div>ㄴ yup hook을 통해서 통합해서 관리</div>
- 
+ <br>
  <li>email을 보내면 내용과 보낸이의 정보가 명확하게 전달 되지 않음</li>
  <div>ㄴ email js의 default template의 양식을 작성하여 보낸이와 받는이 모두에게 내용을 전달하게 설정</div>
- 
+  <br>
  <li>공통 css에서 개별적으로 다른 css적용을 위해 props를 설정할때 인식을 못하는 경우 발생
 </li>
  <div>ㄴ css props type을 설정하여 tpye error 해결</div>
