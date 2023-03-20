@@ -2,8 +2,9 @@ import { useQuery, useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
-console.log(process.env);
-console.log(process.env.NEXT_PUBLIC_API_URL);
+
+// console.log(process.env);
+// console.log(process.env.NEXT_PUBLIC_API_URL);
 interface FormTypes {
   email: string;
   password: string;

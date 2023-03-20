@@ -1,18 +1,25 @@
 import nextConnect from "next-connect";
+import { existsSync, mkdirSync } from "fs";
 import multer from "multer";
 import path from "path";
 import dayjs from "dayjs";
 
-const storage = multer.diskStorage({
+const storage: any = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./public/uploads");
+    const uploadPath: string = path.join(__dirname, "./uploads");
+
+    if (!existsSync(uploadPath)) {
+      mkdirSync(uploadPath, { recursive: true });
+    }
+
+    cb(null, uploadPath);
   },
   filename: function (req, file, cb) {
     const nowDate = dayjs(Date.now()).format("YYMMDDHHMM");
     cb(null, `${nowDate}_${file.originalname}`);
   },
 });
-console.log("서버");
+
 const fileFilter = (req: any, file: any, cb: any) => {
   const typeArray = file.mimetype.split("/");
   const fileType = typeArray[1];
