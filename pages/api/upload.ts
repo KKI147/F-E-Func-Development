@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./uploads");
+    cb(null, "./public/uploads");
   },
   filename: function (req, file, cb) {
     const nowDate = dayjs(Date.now()).format("YYMMDDHHMM");
@@ -41,9 +41,10 @@ const upload = multer({
 
 const app = nextConnect({
   onError(error, req, res: any) {
-    res
-      .status(501)
-      .json({ error: `Sorry something Happened! ${error.message}` });
+    res.status(501).json({
+      error: `Sorry something Happened! ${error.message}`,
+      content: error,
+    });
   },
   onNoMatch(req, res) {
     res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
