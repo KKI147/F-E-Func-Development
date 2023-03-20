@@ -9,10 +9,10 @@ const storage: any = multer.diskStorage({
     const uploadPath: string = "uploads";
     console.log("파일 시스템");
 
-    if (!existsSync(uploadPath)) {
-      console.log(uploadPath);
-      mkdirSync(uploadPath, { recursive: true });
-    }
+    // if (!existsSync(uploadPath)) {
+    //   console.log(uploadPath);
+    //   mkdirSync(uploadPath, { recursive: true });
+    // }
 
     cb(null, uploadPath);
   },
