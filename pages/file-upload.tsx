@@ -47,7 +47,7 @@ export const FileUpload = () => {
           description={[
             "nextConnect와 multer를 활용해 local-stroage를 만든후 image를 저장합니다.",
           ]}
-          status={"개발완료"}
+          status={"개발예정"}
         />
         <SectionContainer>
           <ImageBox>
