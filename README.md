@@ -40,7 +40,7 @@
   <br>
  <li>공통 css에서 개별적으로 다른 css적용을 위해 props를 설정할때 인식을 못하는 경우 발생
 </li>
- <div>ㄴ css props type을 설정하여 tpye error 해결</div>
+ <div>ㄴ css props type을 설정하여 type error 해결</div>
  </ul>
 
 ## **📌 회고**
