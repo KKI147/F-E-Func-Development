@@ -1,8 +1,21 @@
-# F-E-Func-Development
+# 프로젝트 목적
+프론트 개발자가 자주 사용하는 서비스를 학습하고 개발해보는 과정
+
+## 목표
+<ul>
+<li>로그인 및 회원가입</li>
+<li>파일 업로드 및 다운로드</li>
+<li>마크다운 문법을 적용한 에디터기능</li>
+<li>메일 보내기</li>
+<li>달력</li>
+<li>kakao map</li>
+<li>intersection observer</li>
+<li>loading component</li>
+</ul>
 
 ### 🔗[페이지 이동하기](https://f-e-func-development.vercel.app/)
 
-## **🛠️ Stacks**
+## **🛠️ 스택**
 
 <div>
 <img src="https://img.shields.io/badge/html-1572B6?style=for-the-badge&logo=html5&logoColor=white"> 
@@ -16,18 +29,20 @@
  </div>
 <br>
 
-### **❗ Features**
-<div>
-‣ 개발 완료
-</div>
-<div>‣ React Hook form, yup를 이용한 회원가입 및 로그인 개발</div>
-<div>‣ FormData 및 Multer를 사용한 첨부파일 업로드 개발</div>
-<div>‣ 간단한 입력폼의 정보를 React Hook Form, Email-JS를 통한 메일전송 개발</div>
-<div>‣ Kakao Map API Service를 통한 Map Marker 개발</div>
-<div>‣ boolean값에 따른 Loading Component 개발</div>
+## **❗ 사용 기술**
+<ul>
+ 
+ <li>로그인 & 회원가입</li>
+ <div>ㄴ Reack Form을 사용하여 value값을 획득후 required, matches 등과 같은 hook을 사용하여 유효성을 검증</div>
+ <br>
+ <li>Email send</li>
+ <div>ㄴ email js의 와 Reack Form을 사용하여 email형식의 유효성을 검증하고 sendForm hook을 사용하여 return값을 promise로 반환</div>
+  <br>
+ <li>Styled-Components</li>
+ <div>ㄴ 공통적인 css를 작성한 후 개별 layout에 따라 필요한 값을 props로 전달하여 코드의 재사용성을 높임</div>
+ </ul>
 
-<br>
-<div>‣ 개발 예정</div>
-<div>‣ FormData 및 Multer를 사용한 첨부파일 다운로드 개발예정</div>
-<div>‣ React-Sun-Editor를 사용한 Editor Service 개발예정</div>
-<div>‣ React-Calender 개발예정</div>
+## **📌 회고**
+<ul>
+ 
+ </ul>
