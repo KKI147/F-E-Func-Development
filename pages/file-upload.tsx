@@ -11,24 +11,13 @@ export const FileUpload = () => {
   const onChangeHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files !== null) {
       const file: any = e.target.files[0];
-      const extension = file.type.split("/")[1];
-      if (
-        extension === "jpg" ||
-        extension === "png" ||
-        extension === "jpeg" ||
-        extension === "gif" ||
-        extension === "webp"
-      ) {
-        const formData = new FormData();
-        formData.append("file", file);
-        const res: any = await uploadPost("/api/upload", formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
-        setImage(URL.createObjectURL(e.target.files[0]));
-        alert("사진이 등록되었습니다.");
-      } else {
-        alert("등록에 실패하였습니다.\n관리자에게 문의해 주세요");
-      }
+      const formData = new FormData();
+      formData.append("file", file);
+      const res: any = await uploadPost("/api/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      setImage(URL.createObjectURL(e.target.files[0]));
+      alert("사진이 등록되었습니다.");
     }
   };
 

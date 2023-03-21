@@ -9,10 +9,10 @@ const storage: any = multer.diskStorage({
     const uploadPath: string = "uploads";
     console.log("파일 시스템");
 
-    // if (!existsSync(uploadPath)) {
-    //   console.log(uploadPath);
-    //   mkdirSync(uploadPath, { recursive: true });
-    // }
+    if (!existsSync(uploadPath)) {
+      console.log(uploadPath);
+      mkdirSync(uploadPath, { recursive: true });
+    }
 
     cb(null, uploadPath);
   },
@@ -22,30 +22,8 @@ const storage: any = multer.diskStorage({
   },
 });
 
-const fileFilter = (req: any, file: any, cb: any) => {
-  const typeArray = file.mimetype.split("/");
-  const fileType = typeArray[1];
-
-  if (
-    fileType == "jpg" ||
-    fileType == "png" ||
-    fileType == "jpeg" ||
-    fileType == "gif" ||
-    fileType == "webp"
-  ) {
-    req.fileValidationError = "등록 완료";
-    cb(null, true);
-  } else {
-    req.fileValidationError = "jpg,jpeg,png,gif,webp 파일만 업로드 가능합니다.";
-    cb(null, false);
-  }
-};
 const upload = multer({
   storage: storage,
-  fileFilter: fileFilter,
-  limits: {
-    fileSize: 10 * 1024 * 1024, //크기 제한 : 10MB
-  },
 });
 
 const app = nextConnect({
