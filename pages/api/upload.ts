@@ -12,7 +12,7 @@ const storage: any = multer.diskStorage({
     console.log(uploadPath);
     if (!existsSync(uploadPath)) {
       console.log("경로에 해당 폴더 가 없을 때: " + uploadPath);
-      mkdirSync(uploadPath);
+      mkdirSync(uploadPath, { recursive: true });
     }
     cb(null, uploadPath);
   },
