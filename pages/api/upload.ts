@@ -1,6 +1,6 @@
 import nextConnect from "next-connect";
 import multer from "multer";
-import { existsSync, mkdirSync } from "fs";
+import { existsSync, mkdir, mkdirSync } from "fs";
 import { NextApiRequest, NextApiResponse } from "next";
 import dayjs from "dayjs";
 
@@ -12,7 +12,9 @@ const storage: any = multer.diskStorage({
     console.log(uploadPath);
     if (!existsSync(uploadPath)) {
       console.log("경로에 해당 폴더 가 없을 때: " + uploadPath);
-      mkdirSync(uploadPath, { recursive: true });
+      mkdir(uploadPath, (err) => {
+        console.log("에러 : " + err);
+      });
     }
     cb(null, uploadPath);
   },
