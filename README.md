@@ -35,7 +35,7 @@
  <li>로그인 & 회원가입</li>
  <div>ㄴ Reack Form을 사용하여 value값을 획득후 required, matches 등과 같은 hook을 사용하여 유효성을 검증</div>
  <br>
- <li>email send</li>
+ <li>Email send</li>
  <div>ㄴ email js의 와 Reack Form을 사용하여 email형식의 유효성을 검증하고 sendForm hook을 사용하여 return값을 promise로 반환</div>
   <br>
  <li>Styled-Components</li>
