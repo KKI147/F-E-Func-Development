@@ -2,8 +2,25 @@ import styled from "styled-components";
 import Head from "next/head";
 import SectionContainer from "@/component/SectionContainer";
 import TopSection from "@/component/TopSection";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+
+const API_KEY = "10923b261ba94d897ac6b81148314a3f";
 
 export const IntersectionObserver = () => {
+  const [data, setData] = useState<any[]>();
+  useEffect(() => {
+    (async () => {
+      const { results } = await (
+        await fetch(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
+        )
+      ).json();
+      setData(results);
+    })();
+  }, []);
+  console.log(data);
+
   return (
     <>
       <Head>
@@ -14,8 +31,30 @@ export const IntersectionObserver = () => {
       </Head>
 
       <Wrapper>
-        <TopSection skill={["", ""]} description={[""]} status={"개발예정"} />
-        <SectionContainer>Intersection-Observer</SectionContainer>
+        <TopSection skill={[]} description={[]} status={"개발예정"} />
+        <SectionContainer>
+          <Container>
+            {data && data.length > 0
+              ? data.map((movie) => {
+                  return (
+                    <div key={movie.id}>
+                      <ImageBox>
+                        <Image
+                          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                          alt="image"
+                          loading="lazy"
+                          unoptimized={true}
+                          layout="fill"
+                          style={{}}
+                        />
+                        <Title>{movie.original_title}</Title>
+                      </ImageBox>
+                    </div>
+                  );
+                })
+              : null}
+          </Container>
+        </SectionContainer>
       </Wrapper>
     </>
   );
@@ -26,4 +65,39 @@ export default IntersectionObserver;
 const Wrapper = styled.section`
   position: relative;
   height: 100%;
+`;
+
+// export async function getServerSideProps(context: any) {
+//   const { results } = await (
+//     await fetch(`https://localhost:3000/api/movies`)
+//   ).json();
+//   return {
+//     props: {
+//       results,
+//     },
+//   };
+// }
+
+const Container = styled.div`
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Title = styled.div`
+  position: absolute;
+  bottom: -30px;
+  font-size: 12px;
+`;
+
+const ImageBox = styled.div`
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 20px 50px;
 `;
