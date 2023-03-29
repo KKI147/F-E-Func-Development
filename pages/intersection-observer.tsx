@@ -4,6 +4,7 @@ import SectionContainer from "@/component/SectionContainer";
 import TopSection from "@/component/TopSection";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import uuid from "react-uuid";
 
 const API_KEY = "10923b261ba94d897ac6b81148314a3f";
 
@@ -17,7 +18,6 @@ export const Paging = () => {
 
   //useEffect 렌더링 문제 비구조할당 스프래드 연산자 얕은복사 깊은복사
   const dataFetch = async () => {
-    console.log(11);
     const { results } = await (
       await fetch(
         `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
@@ -32,7 +32,6 @@ export const Paging = () => {
   }, []);
 
   useEffect(() => {
-    console.log(data);
     if (data) {
       // data가 존재하면
       const observer = new IntersectionObserver((entries) => {
@@ -45,10 +44,9 @@ export const Paging = () => {
       if (target.current) {
         observer.observe(target.current);
       }
-      return () =>
-        // 옵져버 중지
-
+      return () => {
         observer && observer.disconnect();
+      };
     }
   }, [data]);
 
@@ -68,7 +66,7 @@ export const Paging = () => {
             {data && data.length > 0
               ? data.map((movie: JsonProps, index: number) => {
                   return (
-                    <div key={movie.id}>
+                    <div key={uuid()}>
                       <ImageBox>
                         <Image
                           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -79,7 +77,14 @@ export const Paging = () => {
                           style={{}}
                         />
                         {/* ref={index === 10 ? target : null} */}
-                        <Title ref={index === 19 ? target : null}>
+                        <Title
+                          ref={
+                            movie.original_title ===
+                            "Money Shot: The Pornhub Story"
+                              ? target
+                              : null
+                          }
+                        >
                           {movie.original_title}
                         </Title>
                       </ImageBox>
