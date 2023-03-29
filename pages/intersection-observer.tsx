@@ -60,7 +60,14 @@ export const Paging = () => {
       </Head>
 
       <Wrapper>
-        <TopSection skill={[]} description={[]} status={"개발예정"} />
+        <TopSection
+          skill={["WEB-API", "Intersection-Observer", "UUID"]}
+          description={[
+            "Intersection-Observer를 통해 관찰자 객체를 생성한후 교차점을 관찰하여 요소가 뷰포트에 포함되면\n콜백함수를 이용하여 infinite scroll를 생성합니다.",
+          ]}
+          status={"개발완료"}
+        />
+
         <SectionContainer>
           <Container>
             {data && data.length > 0

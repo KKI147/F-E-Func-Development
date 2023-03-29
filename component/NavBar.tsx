@@ -31,7 +31,7 @@ export default function NavBar() {
               {router.asPath === "/file-upload" ? (
                 <Hover color="#fff">File Upload</Hover>
               ) : (
-                <Text color="#181818">File Upload</Text>
+                <Text>File Upload</Text>
               )}
             </Link>
           </List>
@@ -85,7 +85,7 @@ export default function NavBar() {
               {router.asPath === "/intersection-observer" ? (
                 <Hover color="#fff">Intersection observer</Hover>
               ) : (
-                <Text>Intersection observer</Text>
+                <Text color="#181818">Intersection observer</Text>
               )}
             </Link>
           </List>
