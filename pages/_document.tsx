@@ -46,6 +46,7 @@ export default class MyDocument extends Document {
           <Script
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e78c7f5e9668eaa754a69010f5780571&libraries=services,clusterer&autoload=false"
             strategy="beforeInteractive"
+            defer
           />
           <NextScript />
         </body>

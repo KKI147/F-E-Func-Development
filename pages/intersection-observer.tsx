@@ -2,24 +2,55 @@ import styled from "styled-components";
 import Head from "next/head";
 import SectionContainer from "@/component/SectionContainer";
 import TopSection from "@/component/TopSection";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 const API_KEY = "10923b261ba94d897ac6b81148314a3f";
 
-export const IntersectionObserver = () => {
-  const [data, setData] = useState<any[]>();
+interface JsonProps {
+  [key: string]: string | number;
+}
+
+export const Paging = () => {
+  const [data, setData] = useState<JsonProps[]>([]);
+  const target = useRef<any>(null);
+
+  //useEffect 렌더링 문제 비구조할당 스프래드 연산자 얕은복사 깊은복사
+  const dataFetch = async () => {
+    console.log(11);
+    const { results } = await (
+      await fetch(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
+      )
+    ).json();
+
+    setData((prev) => [...prev, ...results]);
+  };
+
   useEffect(() => {
-    (async () => {
-      const { results } = await (
-        await fetch(
-          `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
-        )
-      ).json();
-      setData(results);
-    })();
+    dataFetch();
   }, []);
-  console.log(data);
+
+  useEffect(() => {
+    console.log(data);
+    if (data) {
+      // data가 존재하면
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          dataFetch();
+        }
+      });
+
+      // 옵져버 탐색 시작
+      if (target.current) {
+        observer.observe(target.current);
+      }
+      return () =>
+        // 옵져버 중지
+
+        observer && observer.disconnect();
+    }
+  }, [data]);
 
   return (
     <>
@@ -35,7 +66,7 @@ export const IntersectionObserver = () => {
         <SectionContainer>
           <Container>
             {data && data.length > 0
-              ? data.map((movie) => {
+              ? data.map((movie: JsonProps, index: number) => {
                   return (
                     <div key={movie.id}>
                       <ImageBox>
@@ -47,7 +78,10 @@ export const IntersectionObserver = () => {
                           layout="fill"
                           style={{}}
                         />
-                        <Title>{movie.original_title}</Title>
+                        {/* ref={index === 10 ? target : null} */}
+                        <Title ref={index === 19 ? target : null}>
+                          {movie.original_title}
+                        </Title>
                       </ImageBox>
                     </div>
                   );
@@ -60,7 +94,7 @@ export const IntersectionObserver = () => {
   );
 };
 
-export default IntersectionObserver;
+export default Paging;
 
 const Wrapper = styled.section`
   position: relative;
@@ -84,9 +118,12 @@ const Container = styled.div`
   flex-wrap: wrap;
   width: 100%;
   height: 100%;
-  overflow-y: hidden;
+  overflow-y: scroll;
   justify-content: center;
   align-items: center;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const Title = styled.div`
