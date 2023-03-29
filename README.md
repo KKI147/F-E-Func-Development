@@ -44,9 +44,9 @@
   <li>Intersection-Observer</li>
  <div>ㄴ Intersection-Observer API를 사용하여 관찰자 객체를 통한 교차점을 관찰한후 타겟을 지정하여 타겟에 뷰포인트가 위치하면 스크롤이 형식되는 구조</div>
  <div>ㄴ useEffect 내의 함수에서 값이 undefined가 발생</div>
- <div> ㄴ useEffect또한 javascript의 실행 방식대로 위에서 아래로 실행되는 구조이기 때문에 useEffect의 순서를 조절</div>
+ <div>-> useEffect또한 javascript의 실행 방식대로 위에서 아래로 실행되는 구조이기 때문에 useEffect의 순서를 조절</div>
  <div>ㄴ 기존 fetch함수에서 data값을 반아온 후 재 요청을 하였을시 data값이 추가되는 것이 아닌 덮어씌어지는 현상 발생</div>
- <div> ㄴ 스프래드 연산자를 이용하여 값을 복사 후 새로운 data값을 배열에 저장</div>
+ <div>-> 스프래드 연산자를 이용하여 값을 복사 후 새로운 data값을 배열에 저장</div>
  </ul>
 
 ## **📌 회고**
