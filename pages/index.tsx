@@ -11,6 +11,14 @@ export default function Home() {
           name="description"
           content="프론트엔드에서 사용자에게 자주 사용되고 활용도가 높은 기능 리스트업 및 학습, 개발"
         />
+        <meta
+          property="og:image"
+          content="https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.velog.io%2Fimages%2Fjay%2Fpost%2F3a497590-d1b6-414c-9f3f-7b6c7eb18f6d%2Fimg.png&tbnid=tYH2z8wiyCJGTM&vet=12ahUKEwiq_NbL0aT-AhWcplYBHYWUCasQMygCegUIARCOAQ..i&imgrefurl=https%3A%2F%2Fvelog.io%2F%40jay%2FNext.js-%25EB%259D%25BC%25EC%259A%25B0%25ED%258C%2585&docid=xdMORv4hbWZZ0M&w=1000&h=571&q=next.js&ved=2ahUKEwiq_NbL0aT-AhWcplYBHYWUCasQMygCegUIARCOAQ"
+        />
+        <meta
+          property="og:url"
+          content="https://f-e-func-development.vercel.app/"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <meta
