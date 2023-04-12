@@ -7,7 +7,7 @@ interface PropsTypes {
 
 export const TopSection = ({ skill, description, status }: PropsTypes) => {
   // localStorage.setItem("Status", status);
-  console.log(description);
+
   return (
     <Container>
       <Content>
@@ -19,7 +19,6 @@ export const TopSection = ({ skill, description, status }: PropsTypes) => {
       <Content>
         <Title>Description,</Title>
         {description.map((item, index) => {
-          console.log(item);
           return <ApiContent key={index}>{item}</ApiContent>;
         })}
       </Content>

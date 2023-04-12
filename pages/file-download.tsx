@@ -48,7 +48,7 @@ export const FileDownload = ({ data }: any) => {
       </Head>
 
       <Wrapper>
-        <TopSection skill={[]} description={[""]} status={"개발예정"} />
+        <TopSection skill={[]} description={[]} status={"개발예정"} />
         <SectionContainer>
           <Image
             src={"/images/google.png"}

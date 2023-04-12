@@ -83,7 +83,7 @@ export const Paging = () => {
                           layout="fill"
                           style={{}}
                         />
-                        {/* ref={index === 10 ? target : null} */}
+
                         <Title
                           ref={
                             movie.original_title ===
