@@ -9,7 +9,7 @@ export default function Home() {
         <meta property="og:title" content="F:E Func, Development" />
         <meta
           name="description"
-          content="FE에서 사용자에게 자주 사용되고 활용도가 높은 기능 리스트업 및 학습, 개발"
+          content="프론트엔드에서 사용자에게 자주 사용되고 활용도가 높은 기능 리스트업 및 학습, 개발"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
