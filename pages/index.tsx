@@ -7,6 +7,11 @@ export default function Home() {
       <Head>
         <title>F:E Func, Development</title>
         <meta property="og:title" content="F:E Func, Development" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:description"
+          content="프론트엔드에서 사용자에게 자주 사용되고 활용도가 높은 기능 리스트업 및 학습, 개발"
+        />
         <meta
           name="description"
           content="프론트엔드에서 사용자에게 자주 사용되고 활용도가 높은 기능 리스트업 및 학습, 개발"
