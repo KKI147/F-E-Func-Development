@@ -30,6 +30,10 @@ export default function Home() {
           name="naver-site-verification"
           content="0d30fb5ec2a7aeebe0f1bcc20bc20ac0bb3329c1"
         />
+        <meta
+          name="google-site-verification"
+          content="IhXpAj5PgRN7sqs8eAjJwalFBfMfMhZ1tOTZ_e2DfN0"
+        />
       </Head>
       <Section>
         <Wrapper>
