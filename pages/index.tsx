@@ -32,7 +32,7 @@ export default function Home() {
         />
         <meta
           name="google-site-verification"
-          content="IhXpAj5PgRN7sqs8eAjJwalFBfMfMhZ1tOTZ_e2DfN0"
+          content="e3YEJLTq3rFueHUpD5j1zqZ_AJ8Kxbenwn4L0PYyY1I"
         />
       </Head>
       <Section>
